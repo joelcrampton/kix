@@ -2,18 +2,22 @@ import { Redirect, Route } from 'react-router-dom';
 import {
   IonApp,
   IonIcon,
-  IonLabel,
   IonRouterOutlet,
   IonTabBar,
   IonTabButton,
   IonTabs,
   setupIonicReact
 } from '@ionic/react';
+import './App.css';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, square, triangle } from 'ionicons/icons';
-import Tab1 from './pages/Tab1';
-import Tab2 from './pages/Tab2';
-import Tab3 from './pages/Tab3';
+import { camera, home, person, search } from 'ionicons/icons';
+import Home from './pages/Home';
+import Search from './pages/Search';
+import Post from './pages/Post';
+import Profile from './pages/Profile';
+import { useEffect, useState } from 'react';
+import { ImageType, ShoeType } from './utils/types';
+import { v4 as uuidv4 } from 'uuid';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -36,41 +40,86 @@ import './theme/variables.css';
 
 setupIonicReact();
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route exact path="/tab1">
-            <Tab1 />
-          </Route>
-          <Route exact path="/tab2">
-            <Tab2 />
-          </Route>
-          <Route path="/tab3">
-            <Tab3 />
-          </Route>
-          <Route exact path="/">
-            <Redirect to="/tab1" />
-          </Route>
-        </IonRouterOutlet>
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon icon={triangle} />
-            <IonLabel>Tab 1</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon icon={ellipse} />
-            <IonLabel>Tab 2</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon icon={square} />
-            <IonLabel>Tab 3</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
-  </IonApp>
-);
+const App: React.FC = () => {
+  // States
+  const [shoes, setShoes] = useState<Array<ShoeType>>([
+    {
+      id: uuidv4(), 
+      brand: 'Jordan', 
+      name: 'Jordan 1 Chicago', 
+      image: {
+        filename: 'jordan-1-chicago.png', 
+        webpath: 'https://blog.klekt.com/wp-content/uploads/2020/05/Air-Jordan-1-Chicago-On-Foot.jpg.webp'
+      }
+    }, 
+    {
+      id: uuidv4(), 
+      brand: 'Nike', 
+      name: 'Air Max 1', 
+      image: {
+        filename: 'air-max-1.png', 
+        webpath: 'https://cdn.sanity.io/images/c1chvb1i/production/e0ee61c9c41e5b93f08ef527aa86625a71224671-1100x735.jpg/Air-Max-1-.jpg?fm=webp'
+      }
+    }
+  ]);
+
+  // Effects
+  useEffect(() => {
+
+  }, [shoes]);
+
+  // Post shoe
+  function post(brand: string, name: string, image: ImageType){
+    setShoes([{id: uuidv4(), brand: brand, name: name, image: image}, ...shoes]);
+  };
+
+  // Remove shoe
+  function remove(id: string){
+    const copy = [...shoes];
+    const index = copy.findIndex(shoe => shoe.id === id);
+    copy.splice(index, 1);
+    setShoes(copy);
+  }
+
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <IonTabs>
+          <IonRouterOutlet>
+            <Route exact path="/home">
+              <Home shoes={shoes} remove={remove} />
+            </Route>
+            <Route path="/search">
+              <Search />
+            </Route>
+            <Route exact path="/post">
+              <Post post={post}/>
+            </Route>
+            <Route path="/profile">
+              <Profile />
+            </Route>
+            <Route exact path="/">
+              <Redirect to="/home" />
+            </Route>
+          </IonRouterOutlet>
+          <IonTabBar slot="bottom">
+            <IonTabButton tab="home" href="/home">
+              <IonIcon icon={home} />
+            </IonTabButton>
+            <IonTabButton tab="search" href="/search">
+              <IonIcon icon={search} />
+            </IonTabButton>
+            <IonTabButton tab="post" href="/post">
+              <IonIcon icon={camera} />
+            </IonTabButton>
+            <IonTabButton tab="profile" href="/profile">
+              <IonIcon icon={person} />
+            </IonTabButton>
+          </IonTabBar>
+        </IonTabs>
+      </IonReactRouter>
+    </IonApp>
+  )
+};
 
 export default App;

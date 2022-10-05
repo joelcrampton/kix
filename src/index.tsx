@@ -1,8 +1,10 @@
 import React from 'react';
+import './index.css';
 import { createRoot } from 'react-dom/client';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
 
 const container = document.getElementById('root');
 const root = createRoot(container!);
@@ -11,6 +13,10 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
+// Web-based UI for Capacitor plugins (Camera, Toast, etc) when not running natively
+// Call the element loader after the app has been rendered the first time
+defineCustomElements(window);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
