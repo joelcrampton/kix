@@ -1,4 +1,4 @@
-# kix
+# Kix
 Mobile app built with Ionic/React and Capacitor to access IoT components.
 - Keep track of your sneaker collection
 - Take photos of your sneakers and post them to your collection
