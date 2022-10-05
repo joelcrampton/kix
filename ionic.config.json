@@ -1,0 +1,7 @@
+{
+  "name": "kix",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
