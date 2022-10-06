@@ -18,12 +18,12 @@ interface Props {
 const Card: React.FC<Props> = ({ shoe, remove }) => {
   return (
     <IonCard className="shoe">
+      <IonImg src={shoe.image.webpath} />
       <IonCardHeader>
         <IonCardSubtitle>{shoe.brand}</IonCardSubtitle>
         <IonCardTitle>{shoe.name}</IonCardTitle>
       </IonCardHeader>
       <IonCardContent>
-        <IonImg src={shoe.image.webpath} />
         {remove !== undefined ? <IonButton className="remove" color="danger" onClick={() => remove(shoe.id)}>Remove</IonButton> : null }
       </IonCardContent>
     </IonCard>

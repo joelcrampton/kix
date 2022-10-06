@@ -105,7 +105,7 @@ const App: React.FC = () => {
               <Post post={post}/>
             </Route>
             <Route path="/profile">
-              <Profile />
+              <Profile shoes={shoes} />
             </Route>
             <Route exact path="/">
               <Redirect to="/home" />

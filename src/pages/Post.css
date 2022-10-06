@@ -10,11 +10,6 @@
   font-size: 4em;
 }
 
-ion-grid.post ion-col{
-  display: flex;
-  justify-content: center;
-}
-
 .success{
   display: grid !important;
   grid-template-columns: 100%;

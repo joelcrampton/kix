@@ -33,7 +33,7 @@ const Search: React.FC<Props> = ({ shoes }) => {
       let matches: Array<ShoeType> = [];
       shoes.forEach(function (shoe) {
         if(shoe.brand.includes(query) || shoe.name.includes(query)){
-          matches = [{id: shoe.id, brand: shoe.brand, name: shoe.name, image: shoe.image}, ...matches];
+          matches = [...matches, {id: shoe.id, brand: shoe.brand, name: shoe.name, image: shoe.image}];
         }
       });
 
@@ -41,9 +41,9 @@ const Search: React.FC<Props> = ({ shoes }) => {
       setResults(matches);
 
       if(matches.length === 0){
-        setCaption('No search results for "' + query + '"');
+        setCaption('No results for "' + query + '"');
       }
-      else setCaption(matches.length+' search result' + (matches.length === 1 ? '' : 's') + ' for "' + query + '"');
+      else setCaption(matches.length+' result' + (matches.length === 1 ? '' : 's') + ' for "' + query + '"');
     }
   }, [shoes, query]);
 
