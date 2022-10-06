@@ -56,3 +56,6 @@ ion-input{
 ion-card{
   --background: #333333
 }
+ion-tab-button[aria-selected=true] ion-icon{ /* I don't know why you need [aria-selected=true] */
+  color: #ffffff
+}

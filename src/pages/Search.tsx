@@ -69,7 +69,7 @@ const Search: React.FC<Props> = ({ shoes, results, setResults }) => {
           </IonHeader>
           <div className="search">
             <IonSearchbar ref={queryRef}></IonSearchbar>
-            <IonButton size="small" onClick={() => {setQuery(getQuery())}}>
+            <IonButton size="small" color="dark" onClick={() => {setQuery(getQuery())}}>
               <IonIcon icon={search} />
             </IonButton>
           </div>

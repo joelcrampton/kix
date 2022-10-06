@@ -131,7 +131,7 @@ const Post: React.FC<Props> = ({ post }) => {
             </IonRow>
             <IonRow>
               <IonCol>
-                <IonButton onClick={() => check()}>Post</IonButton>  
+                <IonButton color="dark" onClick={() => check()}>Post</IonButton>  
               </IonCol>
             </IonRow>
             {success ? notification : null}
