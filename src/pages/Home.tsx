@@ -1,12 +1,11 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import './Home.css';
-import Collection from '../components/Collection';
-import { RemoveInterface } from '../utils/interfaces';
+import Results from '../components/Results';
 import { ShoeType } from '../utils/types';
 
 interface Props {
   shoes: Array<ShoeType>;
-  remove: RemoveInterface
+  remove: any
 }
 
 const Home: React.FC<Props> = ({ shoes, remove }) => {
@@ -18,12 +17,14 @@ const Home: React.FC<Props> = ({ shoes, remove }) => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">My Sneakers</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <Collection shoes={shoes} remove={remove} />
+        <div className="container">
+          <IonHeader collapse="condense">
+            <IonToolbar>
+              <IonTitle size="large">Home</IonTitle>
+            </IonToolbar>
+          </IonHeader>
+          <Results shoes={shoes} remove={remove} />
+        </div>
       </IonContent>
     </IonPage>
   );

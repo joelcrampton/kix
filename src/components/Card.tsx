@@ -8,12 +8,11 @@ import {
   IonButton
 } from '@ionic/react';
 import './Card.css';
-import { RemoveInterface } from '../utils/interfaces';
 import { ShoeType } from '../utils/types';
 
 interface Props {
   shoe: ShoeType
-  remove: RemoveInterface
+  remove: any
 }
 
 const Card: React.FC<Props> = ({ shoe, remove }) => {
@@ -25,7 +24,7 @@ const Card: React.FC<Props> = ({ shoe, remove }) => {
       </IonCardHeader>
       <IonCardContent>
         <IonImg src={shoe.image.webpath} />
-        <IonButton className="remove" color="danger" onClick={() => remove(shoe.id)}>Remove</IonButton>
+        {remove !== undefined ? <IonButton className="remove" color="danger" onClick={() => remove(shoe.id)}>Remove</IonButton> : null }
       </IonCardContent>
     </IonCard>
   );

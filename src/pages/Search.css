@@ -1,0 +1,14 @@
+.search{
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  align-items: center
+}
+
+ion-searchbar{
+  --color: #333333 !important;
+  --icon-color: #333333 !important;
+  --background: #ffffff !important;
+}
+
+
+

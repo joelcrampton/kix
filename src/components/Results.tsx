@@ -1,14 +1,17 @@
-import { IonGrid, IonRow, IonCol } from '@ionic/react';
+import { 
+  IonGrid, 
+  IonRow, 
+  IonCol 
+} from '@ionic/react';
 import Card from './Card';
-import { RemoveInterface } from '../utils/interfaces';
 import { ShoeType } from '../utils/types';
 
 interface Props {
   shoes: Array<ShoeType>;
-  remove: RemoveInterface
+  remove: any
 }
 
-const List: React.FC<Props> = ({ shoes, remove }) => {
+const Results: React.FC<Props> = ({ shoes, remove }) => {
   const rows =  (
     shoes.map(shoe => {
       return (
@@ -28,4 +31,4 @@ const List: React.FC<Props> = ({ shoes, remove }) => {
   );
 };
 
-export default List;
+export default Results;

@@ -34,15 +34,14 @@ const Post: React.FC<Props> = ({ post }) => {
   const nameRef = useRef<any>();
 
   // Dynamic components
-  // Frame
-  let frame = (
+  // Take
+  const take = (
     <IonButton className="take" onClick={() => takePhoto()}>
       <IonIcon icon={camera} />
     </IonButton>
   );
-  if(image !== undefined){
-    frame = ( <IonImg src={image.webpath} onClick={() => takePhoto()} /> );
-  }
+  // Img
+  const img = ( <IonImg src={image?.webpath} onClick={() => takePhoto()} /> );
   // Notification
   const notification = (
     <IonRow>
@@ -54,7 +53,7 @@ const Post: React.FC<Props> = ({ post }) => {
   );
 
   // Take photo
-  const takePhoto = async () => {
+  async function takePhoto(){
     const photo = await Camera.getPhoto({
       quality: 100,
       allowEditing: false,
@@ -108,34 +107,36 @@ const Post: React.FC<Props> = ({ post }) => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Post</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <IonGrid className="post">
-          <IonRow>
-            <IonCol>
-              {frame}
-            </IonCol>
-          </IonRow>
-          <IonRow>
-            <IonCol>
-              <IonInput ref={brandRef} placeholder="Brand" clearInput></IonInput>
-            </IonCol>
-          </IonRow>
-          <IonRow>
-            <IonCol>
-              <IonInput ref={nameRef} placeholder="Name" clearInput></IonInput>
-            </IonCol>
-          </IonRow>
-          <IonRow>
-            <IonCol>
-              <IonButton onClick={() => check()}>Post</IonButton>  
-            </IonCol>
-          </IonRow>
-          {success ? notification : null}
-        </IonGrid>
+        <div className="container">
+          <IonHeader collapse="condense">
+            <IonToolbar>
+              <IonTitle size="large">Post</IonTitle>
+            </IonToolbar>
+          </IonHeader>
+          <IonGrid className="post">
+            <IonRow>
+              <IonCol>
+                {image === undefined ? take : img}
+              </IonCol>
+            </IonRow>
+            <IonRow>
+              <IonCol>
+                <IonInput ref={brandRef} placeholder="Brand" clearInput></IonInput>
+              </IonCol>
+            </IonRow>
+            <IonRow>
+              <IonCol>
+                <IonInput ref={nameRef} placeholder="Name" clearInput></IonInput>
+              </IonCol>
+            </IonRow>
+            <IonRow>
+              <IonCol>
+                <IonButton onClick={() => check()}>Post</IonButton>  
+              </IonCol>
+            </IonRow>
+            {success ? notification : null}
+          </IonGrid>
+        </div>
       </IonContent>
     </IonPage>
   );

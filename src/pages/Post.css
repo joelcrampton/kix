@@ -1,17 +1,12 @@
-ion-grid.post{
-  width: 80%;
-  margin: 0 10%;
-}
-
-ion-button.take{
+.take{
   width: 100%;
   height: 200px;
-  border: 3px dashed #cccccc;
+  border: 3px dashed #ffffff;
   border-radius: 20px;
   --background: transparent;
 }
 
-ion-button.take > ion-icon{
+.take > ion-icon{
   font-size: 4em;
 }
 
@@ -20,7 +15,7 @@ ion-grid.post ion-col{
   justify-content: center;
 }
 
-ion-col.success{
+.success{
   display: grid !important;
   grid-template-columns: 100%;
   grid-template-rows: repeat(2, max-content);
@@ -35,7 +30,7 @@ ion-col.success{
   background: #00994d !important
 }
 
-ion-col.success > ion-button{
+.success > ion-button{
   justify-self: center;
   width: max-content;
   font-size: 1em !important;

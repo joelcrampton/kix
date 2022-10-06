@@ -45,19 +45,28 @@ const App: React.FC = () => {
   const [shoes, setShoes] = useState<Array<ShoeType>>([
     {
       id: uuidv4(), 
-      brand: 'Jordan', 
-      name: 'Jordan 1 Chicago', 
+      brand: 'jordan', 
+      name: 'jordan 1 chicago', 
       image: {
         filename: 'jordan-1-chicago.png', 
         webpath: 'https://blog.klekt.com/wp-content/uploads/2020/05/Air-Jordan-1-Chicago-On-Foot.jpg.webp'
       }
-    }, 
+    },
     {
       id: uuidv4(), 
-      brand: 'Nike', 
-      name: 'Air Max 1', 
+      brand: 'adidas', 
+      name: 'yeezy 350 turtle dove', 
       image: {
-        filename: 'air-max-1.png', 
+        filename: 'yeezy-350-turtle-dove.png', 
+        webpath: 'https://sneakernews.com/wp-content/uploads/2016/02/yeezy-boost-50-turtle-dove-2016-release.jpg?w=780&h=550&crop=1'
+      }
+    },  
+    {
+      id: uuidv4(), 
+      brand: 'nike', 
+      name: 'air max 1 patta noise aqua', 
+      image: {
+        filename: 'air-max-1-patta-noise-aqua.png', 
         webpath: 'https://cdn.sanity.io/images/c1chvb1i/production/e0ee61c9c41e5b93f08ef527aa86625a71224671-1100x735.jpg/Air-Max-1-.jpg?fm=webp'
       }
     }
@@ -90,7 +99,7 @@ const App: React.FC = () => {
               <Home shoes={shoes} remove={remove} />
             </Route>
             <Route path="/search">
-              <Search />
+              <Search shoes={shoes} />
             </Route>
             <Route exact path="/post">
               <Post post={post}/>
