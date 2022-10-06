@@ -16,11 +16,12 @@ import { ShoeType } from '../utils/types';
 
 interface Props{
   shoes: Array<ShoeType>;
+  results: Array<ShoeType>;
+  setResults: any
 }
 
-const Search: React.FC<Props> = ({ shoes }) => {
+const Search: React.FC<Props> = ({ shoes, results, setResults }) => {
   // States
-  const [results, setResults] = useState<Array<ShoeType>>([...shoes]);
   const [query, setQuery] = useState<string>('');
   const [caption, setCaption] = useState<string>('Showing all your kix');
   // Refs
@@ -30,22 +31,20 @@ const Search: React.FC<Props> = ({ shoes }) => {
   // Update results everytime search changes
   useEffect(() => {
     if(query !== ''){
+      // Results
       let matches: Array<ShoeType> = [];
       shoes.forEach(function (shoe) {
         if(shoe.brand.includes(query) || shoe.name.includes(query)){
           matches = [...matches, {id: shoe.id, brand: shoe.brand, name: shoe.name, image: shoe.image}];
         }
       });
-
-
       setResults(matches);
 
-      if(matches.length === 0){
-        setCaption('No results for "' + query + '"');
-      }
+      // Caption
+      if(matches.length === 0) setCaption('No results for "' + query + '"');
       else setCaption(matches.length+' result' + (matches.length === 1 ? '' : 's') + ' for "' + query + '"');
     }
-  }, [shoes, query]);
+  }, [query, shoes, setResults]);
 
   // Get query value from input
   function getQuery(){

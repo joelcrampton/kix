@@ -54,6 +54,15 @@ const App: React.FC = () => {
     },
     {
       id: uuidv4(), 
+      brand: 'jordan', 
+      name: 'jordan 4 military black', 
+      image: {
+        filename: 'jordan-4-military-black.png', 
+        webpath: 'https://cdn.sanity.io/images/c1chvb1i/production/fc764a161902f06207a15a16dfbab6775ed00f07-1100x735.jpg'
+      }
+    },
+    {
+      id: uuidv4(), 
       brand: 'adidas', 
       name: 'yeezy 350 turtle dove', 
       image: {
@@ -71,23 +80,34 @@ const App: React.FC = () => {
       }
     }
   ]);
+  const [results, setResults] = useState<Array<ShoeType>>([...shoes]);
 
   // Effects
-  useEffect(() => {
-
-  }, [shoes]);
+  useEffect(() => {}, [shoes]);
 
   // Post shoe
   function post(brand: string, name: string, image: ImageType){
     setShoes([{id: uuidv4(), brand: brand, name: name, image: image}, ...shoes]);
   };
 
-  // Remove shoe
+  // Remove from shoes and results
   function remove(id: string){
+    removeShoes(id);
+    removeResults(id);
+  }
+  // Remove shoe
+  function removeShoes(id: string){
     const copy = [...shoes];
     const index = copy.findIndex(shoe => shoe.id === id);
     copy.splice(index, 1);
     setShoes(copy);
+  }
+  // Remove results
+  function removeResults(id: string){
+    const copy = [...results];
+    const index = copy.findIndex(shoe => shoe.id === id);
+    copy.splice(index, 1);
+    setResults(copy);
   }
 
   return (
@@ -99,7 +119,7 @@ const App: React.FC = () => {
               <Home shoes={shoes} remove={remove} />
             </Route>
             <Route path="/search">
-              <Search shoes={shoes} />
+              <Search shoes={shoes} results={results} setResults={setResults} />
             </Route>
             <Route exact path="/post">
               <Post post={post}/>

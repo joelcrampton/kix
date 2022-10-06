@@ -53,3 +53,6 @@ ion-input{
   border: none;
   border-bottom: 2px solid #ffffff
 }
+ion-card{
+  --background: #333333
+}
