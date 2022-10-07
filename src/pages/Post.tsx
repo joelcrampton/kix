@@ -69,14 +69,14 @@ const Post: React.FC<Props> = ({ post }) => {
 
   // Get brand value from input
   function getBrand(){
-    const brand = brandRef.current?.value;
+    const brand = brandRef.current?.value.trim().toLowerCase();
     if(brand === undefined) return '';
     return brand;
   }
 
   // Get name value from input
   function getName(){
-    const name = nameRef.current?.value;
+    const name = nameRef.current?.value.trim().toLowerCase();
     if(name === undefined) return '';
     return name;
   }

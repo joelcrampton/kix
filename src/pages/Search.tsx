@@ -48,7 +48,7 @@ const Search: React.FC<Props> = ({ shoes, results, setResults }) => {
 
   // Get query value from input
   function getQuery(){
-    const input = queryRef.current?.value.trim();
+    const input = queryRef.current?.value.trim().toLowerCase();
     if(input === undefined) return '';
     return input;
   }

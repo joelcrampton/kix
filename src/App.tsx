@@ -88,6 +88,7 @@ const App: React.FC = () => {
   // Post shoe
   function post(brand: string, name: string, image: ImageType){
     setShoes([{id: uuidv4(), brand: brand, name: name, image: image}, ...shoes]);
+    setResults([{id: uuidv4(), brand: brand, name: name, image: image}, ...results]);
   };
 
   // Remove from shoes and results

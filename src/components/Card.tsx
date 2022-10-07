@@ -8,6 +8,7 @@ import {
   IonButton
 } from '@ionic/react';
 import './Card.css';
+import { toTitleCase } from '../utils/format';
 import { ShoeType } from '../utils/types';
 
 interface Props {
@@ -20,8 +21,8 @@ const Card: React.FC<Props> = ({ shoe, remove }) => {
     <IonCard className="shoe">
       <IonImg src={shoe.image.webpath} />
       <IonCardHeader>
-        <IonCardSubtitle>{shoe.brand}</IonCardSubtitle>
-        <IonCardTitle>{shoe.name}</IonCardTitle>
+        <IonCardSubtitle>{toTitleCase(shoe.brand)}</IonCardSubtitle>
+        <IonCardTitle>{toTitleCase(shoe.name)}</IonCardTitle>
       </IonCardHeader>
       <IonCardContent>
         {remove !== undefined ? <IonButton className="remove" color="danger" onClick={() => remove(shoe.id)}>Remove</IonButton> : null }

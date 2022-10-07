@@ -13,14 +13,14 @@ const Home: React.FC<Props> = ({ shoes, remove }) => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Home</IonTitle>
+          <IonTitle>Kix</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         <div className="container">
           <IonHeader collapse="condense">
             <IonToolbar>
-              <IonTitle size="large">Home</IonTitle>
+              <IonTitle size="large">Kix</IonTitle>
             </IonToolbar>
           </IonHeader>
           <Results shoes={shoes} remove={remove} />
