@@ -78,6 +78,15 @@ const App: React.FC = () => {
         filename: 'air-max-1-patta-noise-aqua.png', 
         webpath: 'https://cdn.sanity.io/images/c1chvb1i/production/e0ee61c9c41e5b93f08ef527aa86625a71224671-1100x735.jpg/Air-Max-1-.jpg?fm=webp'
       }
+    },  
+    {
+      id: uuidv4(), 
+      brand: 'nike', 
+      name: 'dunk low panda', 
+      image: {
+        filename: 'dunk-low-panda.png', 
+        webpath: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVDquDNA3SUOkjwOnmZZlgebi9IfUo3n2w8Q&usqp=CAU'
+      }
     }
   ]);
   const [results, setResults] = useState<Array<ShoeType>>([...shoes]);
